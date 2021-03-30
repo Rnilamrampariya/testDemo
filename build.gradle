@@ -23,14 +23,15 @@ ext {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.testcontainers:junit-jupiter'
     implementation 'io.rest-assured:rest-assured:4.1.1'
+    implementation 'io.rest-assured:json-path:4.1.1'
+    implementation 'io.rest-assured:xml-path:4.1.1'
+    implementation 'io.rest-assured:rest-assured-common:4.1.1'
     testImplementation group: 'org.testng', name: 'testng', version: '7.4.0'
 }
 
@@ -41,5 +42,8 @@ dependencyManagement {
 }
 
 test {
-    useJUnitPlatform()
+    useTestNG() {
+        useDefaultListeners = true
+        outputDirectory = file("$projectDir/testNGReports",)
+    }
 }

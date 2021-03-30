@@ -1,5 +1,6 @@
 package com.example.AutomationDemo;
 
+import org.springframework.boot.test.context.SpringBootTest;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
@@ -10,7 +11,7 @@ public class ControllerTest {
         given().
                 queryParam("inputString", "World").
                 when().
-                get("http://localhost:8081/rest/getInputString?inputString=World").
+                get("http://localhost:8081/rest/getString?inputString=Nilam").
                 then().
                 statusCode(200);
     }
@@ -18,7 +19,7 @@ public class ControllerTest {
     @Test
     public void test1() {
 
-        given().get("http://localhost:8081/rest/getInputString?inputString=World").then().
+        given().get("http://localhost:8081/rest/getString?inputString=Nilam").then().
                 statusCode(200).
                 log().all();
     }
